@@ -10,7 +10,9 @@ typedef struct _childData {
     double goodness;
 } ChildData;
 
-typedef struct _childDataMgmt ChildDataMgmt;
+typedef struct _childDataMgmt{
+  List* kids;
+} ChildDataMgmt;
 
 /**
  * Creates a structure for child data management
@@ -19,7 +21,7 @@ ChildDataMgmt* cdm_create();
 
 /**
  * Uses the child management logic to process child data
- * (hint: insert it, sorted by town into the internal list)
+ * (hint: insert it, sorted by city, into the internal list)
  */
 void cdm_add_data(ChildDataMgmt *cdm, ChildData *data);
 

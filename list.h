@@ -39,7 +39,7 @@ Node* list_get_next(Node *node);
 
 /**
  * Retrieves the data stored in the supplied node
- * (hint: you'll probably won't be able to use this void* without casting)
+ * (hint: you probably won't be able to use this void* without casting)
  */
 void* list_get_data(Node *node);
 
