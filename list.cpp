@@ -27,7 +27,7 @@ void list_delete(List *list)
 
 void list_add(List *list, void *data)
 {
-    Node *current = (Node *)malloc(sizeof(Node));
+   Node *current = (Node *)malloc(sizeof(Node));
 
     current->data = data;
     current->next = list->head;
@@ -50,11 +50,6 @@ Node *list_get_first(List *list)
 
 Node *list_get_next(Node *node)
 {
-    if (node->next == 0)
-    {
-        return node;
-    }
-
     return node->next;
 }
 
