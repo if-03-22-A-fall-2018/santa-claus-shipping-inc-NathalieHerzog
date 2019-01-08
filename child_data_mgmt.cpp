@@ -12,18 +12,37 @@ ChildDataMgmt *cdm_create()
 
 void cdm_add_data(ChildDataMgmt *cdm, ChildData *data)
 {
-    Node *current = list_get_data(cdm);
-    _childData *current = (_childData *)list_get_data(list_get_first(cdm->kids));
-
-    while (current != 0 && strcmp(current->city, data->city) <= 0)
+    if (data == 0)
     {
-
+        return;
     }
 
-    current->data = data;
-    current->next = list->head;
-    list->head = current;
-    
+    Node *current = list_get_first(cdm->kids);
+
+    if (current != 0)
+    {
+        _childData *currentD = (_childData*)list_get_data(current);
+        Node *prev = 0;
+
+        while (current != 0 && strcmp(currentD->city, data->city) <= 0)
+        {
+            prev = current;
+            current = list_get_next(current);
+            if (current != 0)
+            {
+                currentD = (ChildData *)list_get_data(current);
+            }
+        }
+
+        if (prev != 0)
+        {
+            list_insert_after(prev, data);
+        }
+    }
+    else
+    {
+        list_add(cdm->kids, data);
+    }
 }
 
 Node *cdm_get_sorted_data(ChildDataMgmt *cdm)

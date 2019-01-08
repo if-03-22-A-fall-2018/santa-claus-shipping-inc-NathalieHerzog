@@ -4,20 +4,22 @@
 
 #include "list.h"
 
-typedef struct _childData {
-    const char* city;
-    const char* name;
-    double goodness;
+typedef struct _childData
+{
+  const char *city;
+  const char *name;
+  double goodness;
 } ChildData;
 
-typedef struct _childDataMgmt{
-  List* kids;
+typedef struct _childDataMgmt
+{
+  List *kids;
 } ChildDataMgmt;
 
 /**
  * Creates a structure for child data management
  */
-ChildDataMgmt* cdm_create();
+ChildDataMgmt *cdm_create();
 
 /**
  * Uses the child management logic to process child data
@@ -29,7 +31,7 @@ void cdm_add_data(ChildDataMgmt *cdm, ChildData *data);
  * Returns a pointer to the first element of the properly sorted list
  * (hint: "sorting" should have already happened when inserting)
  */
-Node* cdm_get_sorted_data(ChildDataMgmt *cdm);
+Node *cdm_get_sorted_data(ChildDataMgmt *cdm);
 
 /**
  * Used to clean up memory allocated when creating the child management structure
