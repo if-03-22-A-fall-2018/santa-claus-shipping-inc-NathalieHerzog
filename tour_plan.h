@@ -25,6 +25,8 @@ typedef struct _tourPlan {
  */
 TourPlan* plan_createTour(ChildDataMgmt *cdm);
 
+ChildPlan *data_as_plan(ChildData *child_data);
+
 /**
  * Prints the tour plan to the console
  * (hint: check the assignment description for the proper format)
