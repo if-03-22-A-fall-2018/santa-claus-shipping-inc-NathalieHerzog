@@ -22,16 +22,31 @@ List *list_create()
 
 void list_delete(List *list)
 {
+    for (int i = 0; i < list_get_length(list); i++)
+    {
+        Node *head = list->head;
+        list->head = head->next;
+        free(head);
+    }
+
     free(list);
 }
 
 void list_add(List *list, void *data)
 {
     Node *current = (Node *)malloc(sizeof(Node));
-
     current->data = data;
-    current->next = list->head;
-    list->head = current;
+
+    if (list->head == 0)
+    {
+        list->head = current;
+        list->head->next = 0;
+    }
+    else
+    {
+        current->next = list->head;
+        list->head = current;
+    }
 }
 
 void list_insert_after(Node *node, void *data)
@@ -62,12 +77,12 @@ int list_get_length(List *list)
 {
     int count = 0;
 
-    Node *crnt_node = list->head;
+    Node *current = list->head;
 
-    while (crnt_node != 0)
+    while (current != 0)
     {
         count++;
-        crnt_node = crnt_node->next;
+        current = current->next;
     }
 
     return count;
